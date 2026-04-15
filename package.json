@@ -7,6 +7,9 @@
     "node": "24.x"
   },
   "scripts": {
-    "dev": "vercel dev"
+    "dev": "npx vercel dev"
+  },
+  "dependencies": {
+    "mongodb": "^7.1.1"
   }
 }
