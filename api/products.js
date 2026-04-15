@@ -1,4 +1,5 @@
 const { getCollection } = require('./_lib/mongo');
+const { validateProduct } = require('./_lib/validators/product');
 
 module.exports = async (req, res) => {
   const collection = await getCollection();
@@ -7,7 +8,13 @@ module.exports = async (req, res) => {
     const newProduct =
       typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body;
 
-    await collection.insertOne(newProduct);
+    //await collection.insertOne(newProduct);
+    const validation = validateProduct(newProduct);
+    if (!validation.ok) {
+      return res.status(400).json({ error: validation.error });
+    }
+
+    await collection.insertOne(validation.value);
   }
 
   if (req.method !== 'GET' && req.method !== 'POST') {
