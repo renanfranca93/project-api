@@ -77,3 +77,11 @@ curl -X POST http://localhost:3000/api/products ^
   -d "{\"name\":\"Headset\",\"value\":199.9}"
 ```
 
+Formato válido
+
+{
+  "nome":"Título do filme",
+  "imagemUrl":"https://pathwise.com.br/d20.png",
+  "resumo":"Isso é um resumo",
+  "anoLancamento":2020
+}
